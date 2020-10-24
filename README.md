@@ -12,7 +12,7 @@ array compatible with C/Fortran
    ```yaml
    dependencies:
      narray:
-       github: jmakino/narray
+       github: jmakino/narray-crystal
    ```
 
 2. Run `shards install`
