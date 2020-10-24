@@ -12,7 +12,7 @@ array compatible with C/Fortran
    ```yaml
    dependencies:
      narray-crystal:
-       github: jmakino/narray-crystal
+       github: jmakino/narray
    ```
 
 2. Run `shards install`
@@ -21,7 +21,7 @@ array compatible with C/Fortran
 ## Getting started
 At your project directory (where you ran shards install), try
 
-   crystal lib/narray-crystal/examples/narray_test.cr
+   crystal lib/narray/examples/narray_test.cr
 
 should show some output.
 
