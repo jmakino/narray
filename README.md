@@ -25,36 +25,39 @@ At your project directory (where you ran shards install), try
 
 should show some output.
 
-* GRDIR env variable should point to the directory where you placed
-  gr files. In particular,  lib and fonts directories should be there
-* GKS_WSTYPE env variable should be set. For X11, its value should
-  be "x11".
   
 ## Usage
 
-  require "narray" provides a Narray class.
-
+```
+  require "narray"
+```
+provides a Narray class.
+```
   Narray(T).new(nx : Int32,ny : Int32 = 1, nz : Int32 = 1)
-
+```
 creates the Narray of type T of up to three dimensions. For example,
-
+```
   x = Narray(Float64).new(10)
-
+```
 makes one-dimensional array of size 10 of Float 64, and
-
+```
   xy = Narray(Float64).new(10,20)
-
+```
 makes two-dimensional array of size 10  times 20 of Float 64.
 
 The elements of x can be accessed and assigned using usial [], like
 
+```
   pp! x[1]
   x[2]=5.0
+```
 
 and the elements of xy as
-
+```
   pp! xy[1,2]
   x[2,3]=5.0
+```
+
 
 The storage order is in C convention, not in the Fortran convention.
 
