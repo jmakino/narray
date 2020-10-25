@@ -14,17 +14,14 @@ class Narray(T)
       false
     {% end %}
   end
-  def initialize(nx : Int32,ny : Int32 = 1, nz : Int32 = 1)
+  def initialize(@nx : Int32, @ny : Int32 = 1, @nz : Int32 = 1)
     {% if bound_check %}
-      @data = Slice(T).new(Pointer(T).malloc(nx*ny*nz), nx*ny*nz)
+      @data = Slice(T).new(Pointer(T).malloc(@nx*@ny*@nz), @nx*@ny*@nz)
       @datasl = @data
     {% else %}
       @data = Pointer(T).malloc(nx*ny*nz)
       @datasl = Slice(T).new(@data,  nx*ny*nz)
     {% end %}
-    @nx=nx
-    @ny=ny
-    @nz=nz
   end
   def [](i)   @data[i] end
   def [](i,j) @data[i*@ny+j]  end
