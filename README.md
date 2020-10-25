@@ -72,3 +72,19 @@ is enabled or not.
 
 You can use all member functions supported by Slice. For example, you
 can sort the array by x.sort!
+
+A special `each_index` method is available. 
+```
+   xyz = Narray(Float64).new(10,10,10)
+   xyz.each_index{|i,j,k| xyz[i,j,k]= ...}
+```
+loops over all indices of xyz. For 1 and 2-dimentional arrays, you can
+write
+```
+   x = Narray(Float64).new(10)
+   x.each_index{|i| x[i]= ...}
+   xy = Narray(Float64).new(10,10)
+   xy.each_index{|i,j| xy[i,j]= ...}
+```
+The each_index(idim) function is also avaiable, which loops over the idim-th dimension.
+
