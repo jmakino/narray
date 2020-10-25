@@ -32,6 +32,24 @@ class Narray(T)
   def []=(i,x)  @data[i]=x    end
   def []=(i,j,x)   @data[i*@ny+j]=x  end
   def []=(i,j,k, x)  @data[(i*@ny+j)*@nz+k]=x   end
+  def each_index
+    @nx.times{|i|
+      @ny.times{|j|
+        @nz.times{|k|
+          yield i,j,k
+        }
+      }
+    }
+  end
+  def each_index(idim)
+    if idim == 0
+      @nx.times{|i| yield i}
+    elsif  idim == 1
+      @ny.times{|j|yield j}
+    elsif  idim == 2
+      @nz.times{|k|yield k}
+    end
+  end
   macro method_missing(call)
     @datasl.\{{call}}
   end
