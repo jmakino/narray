@@ -11,7 +11,7 @@ array compatible with C/Fortran
 
    ```yaml
    dependencies:
-     narray-crystal:
+     narray:
        github: jmakino/narray
    ```
 

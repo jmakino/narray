@@ -15,19 +15,18 @@ class Narray(T)
     {% end %}
   end
   def initialize(@nx : Int32, @ny : Int32 = 1, @nz : Int32 = 1)
+    n=@nx*@ny*@nz
+    @data = Slice(T).new(Pointer(T).malloc(n), n)
+    @datasl = @data
     {% if bound_check %}
-      @data = Slice(T).new(Pointer(T).malloc(@nx*@ny*@nz), @nx*@ny*@nz)
-      @datasl = @data
-    {% else %}
-      @data = Pointer(T).malloc(nx*ny*nz)
-      @datasl = Slice(T).new(@data,  nx*ny*nz)
+      @data  = @datasl
     {% end %}
   end
-  def [](i)   @data[i] end
-  def [](i,j) @data[i*@ny+j]  end
-  def [](i,j,k)     @data[(i*@ny+j)*@nz+k]   end
-  def []=(i,x)  @data[i]=x    end
-  def []=(i,j,x)   @data[i*@ny+j]=x  end
+  def [](i)      @data[i] end
+  def [](i,j)    @data[i*@ny+j]  end
+  def [](i,j,k)  @data[(i*@ny+j)*@nz+k]   end
+  def []=(i,x)   @data[i]=x    end
+  def []=(i,j,x) @data[i*@ny+j]=x  end
   def []=(i,j,k, x)  @data[(i*@ny+j)*@nz+k]=x   end
   macro method_missing(call)
     @datasl.\{{call}}
